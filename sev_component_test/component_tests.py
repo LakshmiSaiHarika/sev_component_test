@@ -207,7 +207,8 @@ def get_sev_string_and_asids(dmesg_string:string):
         elif (
             sev_support in ('SVM: SEV supported',
                             'SEV supported', 'SEV-ES supported',
-                            'SEV-ES and SEV-SNP supported', 
+                            'SEV-ES and SEV-SNP supported',
+                            'kvm_amd: SEV-ES supported',
                             'kvm_amd: SEV-ES and SEV-SNP supported',
                             'kvm_amd: SEV supported')
             and not support_found
