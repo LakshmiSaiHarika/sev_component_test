@@ -14,10 +14,13 @@ def test_check_eax():
     '''
     Test for check_eax
     '''
-    pass_sev_case = [[], ['0', '0', '0', '0', '0', '0', '0', '0', '0', 'F']]
-    fail_sev_case = [[], ['0', '0', '0', '0', '0', '0', '0', '0', '0', 'D']]
-    pass_sme_case = [[], ['0', '0', '0', '0', '0', '0', '0', '0', '0', 'D']]
-    fail_sme_case = [[], ['0', '0', '0', '0', '0', '0', '0', '0', '0', 'C']]
+    pass_sev_case = [[], '000000000F']
+    fail_sev_case = [[], '000000000D']
+    pass_sme_case = [[], '000000000D']
+    fail_sme_case = [[], '000000000C']
+    pass_snp_case = [[], '0000000010']
+    fail_snp_case = [[], '00000000EF']
+
 
     assert component_tests.check_eax(pass_sev_case, "SEV"),\
         "check_eax did not find the correct decimal value"
@@ -27,8 +30,10 @@ def test_check_eax():
         "check_eax did not find the correct decimal value"
     assert not component_tests.check_eax(fail_sme_case, "SME"),\
         "check_eax did not find the correct decimal value"
-    assert component_tests.check_eax(pass_sev_case,"SNP") is None,\
-        "check_eax did not return none for a non-supported feature"
+    assert component_tests.check_eax(pass_snp_case,"SNP"),\
+        "check_eax did not find the correct decimal value"
+    assert not component_tests.check_eax(fail_snp_case, "SNP"),\
+        "check_eax did not find the correct decimal value"
 
 def test_get_sme_string():
     '''
