@@ -78,10 +78,9 @@ def convert_ovmf_version_to_date(ovmf_version):
     ovmf_version = ovmf_version.replace(".", "")
 
     if len(ovmf_version) < 8:
-        version_year, version_month, version_day = ovmf_version[0:4], ovmf_version[4:], '01'
+        version_year, version_month, version_day = ovmf_version[0:4], ovmf_version[4:6], ovmf_version[6:]
     else:
-        version_year, version_month, version_day = ovmf_version[
-            0:4], ovmf_version[4:6], ovmf_version[6:]
+        version_year, version_month, version_day = ovmf_version[0:4], ovmf_version[4:6], ovmf_version[6:]
 
     try:
         # Put into date time format
